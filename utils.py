@@ -20,6 +20,8 @@ class PrestaError(Exception):
 def get_product_buy_price(
     presta_token: str, product_id: str, multiplier: float
 ) -> Optional[float]:
+    if not product_id:
+        return 0.0
     endpoint = f"products/{product_id}"
     url = f"https://homescreen.pl/api/{endpoint}?ws_key={presta_token}"
 
